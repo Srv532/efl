@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description"
+        content="Escape From Lunars - An adrenaline-pumping 2D chase-runner game. Run, dodge, collect umbrella parts and escape from the Lunar's Cheppal!">
+    <meta name="theme-color" content="#1a0a2e">
+    <title>🌙 Escape From Lunars | The Ultimate Chase Runner</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/src/styles/main.css">
+</head>
+
+<body>
+    <div id="game-container">
+        <!-- Loading Screen -->
+        <div id="loading-screen">
+            <div class="loading-content">
+                <div class="logo-container">
+                    <span class="logo-emoji">🌙</span>
+                    <h1 class="game-title">ESCAPE FROM LUNARS</h1>
+                    <span class="logo-emoji">👟</span>
+                </div>
+                <p class="tagline">The Cheppal Chase Begins...</p>
+                <div class="loading-bar-container">
+                    <div class="loading-bar">
+                        <div class="loading-progress" id="loading-progress"></div>
+                    </div>
+                    <p class="loading-text" id="loading-text">Loading assets...</p>
+                    <div id="debug-log"
+                        style="font-family: monospace; font-size: 10px; color: #ff7675; margin-top: 10px; text-align: left; max-height: 100px; overflow-y: auto;">
+                    </div>
+                </div>
+            </div>
+            <div class="loading-particles"></div>
+        </div>
+
+        <!-- Main Menu -->
+        <div id="main-menu" class="hidden">
+            <div class="menu-background"></div>
+            <div class="menu-content">
+                <div class="title-section">
+                    <h1 class="main-title">
+                        <span class="title-line">ESCAPE</span>
+                        <span class="title-line accent">FROM</span>
+                        <span class="title-line">LUNARS</span>
+                    </h1>
+                    <p class="subtitle">🏃 Run. Dodge. Collect. Survive. 👟</p>
+                </div>
+
+                <div class="menu-buttons">
+                    <button id="play-btn" class="menu-btn primary">
+                        <span class="btn-icon">▶</span>
+                        <span class="btn-text">PLAY</span>
+                    </button>
+                    <button id="difficulty-btn" class="menu-btn">
+                        <span class="btn-icon">⚙</span>
+                        <span class="btn-text">EASY</span>
+                    </button>
+                    <button id="howto-btn" class="menu-btn">
+                        <span class="btn-icon">❓</span>
+                        <span class="btn-text">HOW TO PLAY</span>
+                    </button>
+                    <button id="credits-btn" class="menu-btn">
+                        <span class="btn-icon">⭐</span>
+                        <span class="btn-text">CREDITS</span>
+                    </button>
+                </div>
+
+                <div class="high-score-display">
+                    <span class="label">🏆 HIGH SCORE</span>
+                    <span class="score" id="menu-high-score">0</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- How To Play Modal -->
+        <div id="howto-modal" class="modal hidden">
+            <div class="modal-content">
+                <button class="close-btn" id="close-howto">✕</button>
+                <h2>🎮 HOW TO PLAY</h2>
+                <div class="instructions">
+                    <div class="instruction-item">
+                        <span class="key">← →</span>
+                        <span class="desc">Move Left / Right</span>
+                    </div>
+                    <div class="instruction-item">
+                        <span class="key">SPACE</span>
+                        <span class="desc">Jump / Climb</span>
+                    </div>
+                    <div class="instruction-item">
+                        <span class="key">↓</span>
+                        <span class="desc">Slide / Duck</span>
+                    </div>
+                </div>
+                <div class="objective">
+                    <h3>🎯 OBJECTIVE</h3>
+                    <p>Collect all <strong>10 umbrella parts</strong> while escaping from Mother and her deadly
+                        <strong>Lunar's Chappal</strong>!
+                    </p>
+                    <div class="parts-preview">
+                        <span>🎯 Handle</span>
+                        <span>🔧 Shaft</span>
+                        <span>☂️ Canopy</span>
+                        <span>🦴 Ribs</span>
+                        <span>⚙️ Runner</span>
+                        <span>🔗 Stretchers</span>
+                        <span>📍 Tip</span>
+                        <span>🔩 Spring</span>
+                        <span>🔘 Lock</span>
+                        <span>✨ Top</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Credits Modal -->
+        <div id="credits-modal" class="modal hidden">
+            <div class="modal-content">
+                <button class="close-btn" id="close-credits">✕</button>
+                <h2>⭐ CREDITS</h2>
+                <div class="credits-content">
+                    <p class="credit-line"><strong>Game Design & Development</strong></p>
+                    <p class="credit-name">Built with Antigravity AI</p>
+                    <br>
+                    <p class="credit-line"><strong>Inspired by</strong></p>
+                    <p class="credit-name">Subway Surfers & Indian Culture</p>
+                    <br>
+                    <p class="credit-line"><strong>Special Thanks</strong></p>
+                    <p class="credit-name">Lunar's Footwear 👟</p>
+                    <p class="credit-tagline">"Fashion for your feet since 1975"</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Canvas Container -->
+        <div id="phaser-game" class="hidden"></div>
+
+        <!-- Game HUD -->
+        <div id="game-hud" class="hidden">
+            <div class="hud-top">
+                <div class="score-container">
+                    <span class="hud-label">SCORE</span>
+                    <span class="hud-value" id="hud-score">0</span>
+                </div>
+
+                <!-- Mother Distance Meter -->
+                <div class="mother-distance-container">
+                    <span class="hud-label">👩 MOTHER</span>
+                    <div class="mother-distance-bar">
+                        <div class="mother-distance-fill" id="mother-distance-fill"></div>
+                    </div>
+                    <span class="hud-value" id="mother-distance">50m</span>
+                </div>
+
+                <div class="distance-container">
+                    <span class="hud-label">DISTANCE</span>
+                    <span class="hud-value" id="hud-distance">0m</span>
+                </div>
+                <button id="pause-btn" class="hud-btn">⏸</button>
+            </div>
+            <div class="hud-bottom">
+                <div class="inventory-container">
+                    <span class="inventory-label">☂️ UMBRELLA PARTS</span>
+                    <div class="inventory-slots" id="inventory-slots">
+                        <div class="slot" data-part="handle" title="Handle">🎯</div>
+                        <div class="slot" data-part="shaft" title="Shaft">🔧</div>
+                        <div class="slot" data-part="canopy" title="Canopy">☂️</div>
+                        <div class="slot" data-part="ribs" title="Ribs">🦴</div>
+                        <div class="slot" data-part="runner" title="Runner">⚙️</div>
+                        <div class="slot" data-part="stretchers" title="Stretchers">🔗</div>
+                        <div class="slot" data-part="tip" title="Tip">📍</div>
+                        <div class="slot" data-part="spring" title="Spring">🔩</div>
+                        <div class="slot" data-part="lock" title="Lock">🔘</div>
+                        <div class="slot" data-part="top" title="Top">✨</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Mobile Controls -->
+            <div class="mobile-controls">
+                <button id="mobile-left" class="mobile-btn">◀</button>
+                <button id="mobile-jump" class="mobile-btn large">⬆</button>
+                <button id="mobile-right" class="mobile-btn">▶</button>
+                <button id="mobile-slide" class="mobile-btn">⬇</button>
+            </div>
+        </div>
+
+        <!-- Pause Menu -->
+        <div id="pause-menu" class="hidden">
+            <div class="pause-content">
+                <h2>⏸ PAUSED</h2>
+                <button id="resume-btn" class="menu-btn primary">RESUME</button>
+                <button id="restart-btn" class="menu-btn">RESTART</button>
+                <button id="quit-btn" class="menu-btn">QUIT TO MENU</button>
+            </div>
+        </div>
+
+        <!-- Game Over Screen -->
+        <div id="game-over" class="hidden">
+            <div class="game-over-content">
+                <h2 class="game-over-title">💥 CAUGHT!</h2>
+                <p class="game-over-subtitle">The Lunar's Cheppal got you!</p>
+                <div class="final-stats">
+                    <div class="stat">
+                        <span class="stat-label">SCORE</span>
+                        <span class="stat-value" id="final-score">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">DISTANCE</span>
+                        <span class="stat-value" id="final-distance">0m</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">PARTS COLLECTED</span>
+                        <span class="stat-value" id="final-parts">0/9</span>
+                    </div>
+                </div>
+                <div class="new-high-score hidden" id="new-high-score">
+                    🏆 NEW HIGH SCORE! 🏆
+                </div>
+                <div class="game-over-buttons">
+                    <button id="retry-btn" class="menu-btn primary">🔄 TRY AGAIN</button>
+                    <button id="menu-btn" class="menu-btn">🏠 MAIN MENU</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Victory Screen -->
+        <div id="victory-screen" class="hidden">
+            <div class="victory-content">
+                <h2 class="victory-title">🎉 VICTORY! 🎉</h2>
+                <p class="victory-subtitle">You collected all umbrella parts!</p>
+                <div class="umbrella-complete">☂️</div>
+                <div class="final-stats">
+                    <div class="stat">
+                        <span class="stat-label">FINAL SCORE</span>
+                        <span class="stat-value" id="victory-score">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">TOTAL DISTANCE</span>
+                        <span class="stat-value" id="victory-distance">0m</span>
+                    </div>
+                </div>
+                <div class="victory-buttons">
+                    <button id="victory-menu-btn" class="menu-btn primary">🏠 MAIN MENU</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>
