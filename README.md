@@ -14,7 +14,7 @@
 
 *A high-fidelity 2D endless runner set in the vibrant streets of India, built with Phaser 3.*
 
-[**🎮 PLAY NOW**](http://localhost:3000/)
+[**🎮 PLAY NOW**](https://efl-eight.vercel.app)
 
 </div>
 
@@ -127,7 +127,7 @@ npm install
 npm run dev
 
 # 4. Open in browser
-# http://localhost:3000/
+# https://efl-eight.vercel.app
 ```
 
 ---
