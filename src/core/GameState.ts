@@ -57,8 +57,8 @@ export class GameState {
         document.querySelectorAll('.slot').forEach((s) => s.classList.remove('collected'));
     }
 
-    public addDistance(pixels: number) {
-        this.distance += pixels / GAME_CONFIG.PX_PER_M;
+    public addDistance(metres: number) {
+        this.distance += metres;
     }
 
     public refreshScore(coins: number) {

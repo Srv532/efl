@@ -1,16 +1,13 @@
 {
     "name": "escape-from-lunars",
     "private": true,
-    "version": "1.1.0",
+    "version": "2.0.0",
     "type": "module",
-    "description": "A high-fidelity 2D browser-based chase-runner game",
+    "description": "A 3D browser-based chase-runner game (Babylon.js)",
     "scripts": {
         "dev": "vite",
         "build": "vite build",
         "preview": "vite preview"
-    },
-    "dependencies": {
-        "phaser": "^3.80.1"
     },
     "devDependencies": {
         "@types/node": "^25.0.9",
@@ -18,5 +15,8 @@
         "typescript": "^5.9.3",
         "vite": "^5.4.2",
         "vite-plugin-checker": "^0.12.0"
+    },
+    "dependencies": {
+        "@babylonjs/core": "^9.32.0"
     }
 }

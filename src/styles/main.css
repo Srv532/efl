@@ -1010,14 +1010,14 @@ body {
     justify-content: center;
 }
 
-/* ===== Phaser Game Container ===== */
-#phaser-game {
+/* ===== Game canvas container ===== */
+#game-canvas {
     position: absolute;
     inset: 0;
     z-index: var(--z-game);
 }
 
-#phaser-game canvas {
+#game-canvas canvas {
     display: block;
     width: 100% !important;
     height: 100% !important;
@@ -1091,7 +1091,7 @@ body {
     }
 }
 /* ===== v1.1 fixes ===== */
-#phaser-game {
+#game-canvas {
     position: absolute;
     inset: 0;
     z-index: var(--z-game);
@@ -1219,4 +1219,42 @@ body {
 .mobile-btn.large {
     width: clamp(58px, 12vw, 80px);
     height: clamp(58px, 12vw, 80px);
+}
+
+/* ===== 3D: floating score text + canvas ===== */
+#game-canvas canvas {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+    touch-action: none;
+}
+
+.pop-text {
+    position: absolute;
+    z-index: calc(var(--z-hud) + 1);
+    transform: translate(-50%, -50%);
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: clamp(1.1rem, 2.6vw, 1.9rem);
+    -webkit-text-stroke: 5px #14142b;
+    paint-order: stroke fill;
+    pointer-events: none;
+    animation: popUp 0.85s ease-out forwards;
+}
+
+@keyframes popUp {
+    from { opacity: 1; transform: translate(-50%, -50%) scale(0.8); }
+    30% { transform: translate(-50%, -90%) scale(1.15); }
+    to { opacity: 0; transform: translate(-50%, -220%) scale(1); }
+}
+
+/* ===== short windows: keep the whole menu on screen ===== */
+@media (max-height: 640px) {
+    .menu-content { padding: 0.5rem 1rem; }
+    .main-title { display: flex; gap: 0.6rem; align-items: baseline; justify-content: center; flex-wrap: wrap; margin-bottom: 0.3rem; }
+    .title-line, .title-line.accent { font-size: clamp(1.4rem, 5vh, 2.6rem); }
+    .subtitle { font-size: 0.95rem; margin-bottom: 0.4rem; }
+    .menu-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+    .menu-btn { width: auto; padding: 0.5rem 1rem; font-size: 0.95rem; }
+    .high-score-display { margin-top: 0.5rem; padding: 0.4rem 1rem; }
 }

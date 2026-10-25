@@ -2,8 +2,8 @@
 
 # 🌙 ESCAPE FROM LUNARS 👟
 
-<img src="https://img.shields.io/badge/Version-1.1.0-orange?style=for-the-badge&logo=statuspage&logoColor=white" alt="Status"/>
-<img src="https://img.shields.io/badge/Made%20With-Phaser%203-blue?style=for-the-badge&logo=html5&logoColor=white" alt="Made With"/>
+<img src="https://img.shields.io/badge/Version-2.0.0-orange?style=for-the-badge&logo=statuspage&logoColor=white" alt="Status"/>
+<img src="https://img.shields.io/badge/Made%20With-Babylon.js-blue?style=for-the-badge&logo=html5&logoColor=white" alt="Made With"/>
 <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge&logo=opensourceinitiative&logoColor=white" alt="License"/>
 
 ---
@@ -12,7 +12,7 @@
 
 **Dodge Rickshaws. Outrun the Chappal. Collect Umbrella Parts.**
 
-*A top-down endless runner set in the vibrant streets of India, built with Phaser 3.*
+*A 3D endless runner set in the vibrant streets of India, built on the Babylon.js game engine.*
 
 [**🎮 PLAY NOW**](https://efl-eight.vercel.app)
 
@@ -20,15 +20,15 @@
 
 ---
 
-## ✨ What's new in v1.1
+## ✨ What's new in v2.0 - now in 3D
 
-*   **All-new art**: every sprite and the street are drawn in code - crisp at any size, truly transparent, nothing to download.
-*   **One consistent top-down view**: street, runner, Mother, rickshaws, carts, chappals, barriers and banners.
-*   **Jump, slide and lane changes all matter**: jump over chappals and barriers, slide under banners, dodge rickshaws and carts.
+*   **Full 3D on a real game engine**: rebuilt on [Babylon.js](https://www.babylonjs.com/) with a chase camera, real-time shadows, glow, anti-aliasing and particle effects.
+*   **A living street**: detailed shopfronts with striped awnings, balconies, rooftop water tanks, palm trees, lamp posts, parked scooters and people strolling along the pavement.
+*   **Characters with outlines**: Kabir, Mother, rickshaw drivers and pedestrians are low-poly models with a bold ink outline.
+*   **Real 3D collisions**: jump over chappals and barriers, slide under banners, change lane to dodge rickshaws and carts.
 *   **Mother chase meter**: hits cost metres, coins and umbrella parts buy them back; reach 0m and you are caught.
-*   **Working menu**: difficulty (Easy / Normal / Hard), How to Play, Credits and a saved high score.
-*   **Better controls**: swipe or tap on touch screens, `P` / `Esc` to pause, auto-pause when the tab loses focus.
-*   **Compact HUD** that no longer covers the lanes, and a bundle with no image files.
+*   **Smart performance**: no model or image files, and the render resolution drops automatically on slow devices.
+*   Menu, difficulty, saved high score, swipe controls and pause all carry over from v1.1.
 
 ### Still to do
 *   Sound effects and music
@@ -52,7 +52,7 @@
 <td width="50%">
 
 ### 🛠️ Under the Hood
-*   **Procedural art**: textures are generated at start-up from drawing code (`src/art/draw.ts`).
+*   **Procedural 3D art**: every model is built from primitives in code (`src/game/models.ts`, `src/game/world.ts`).
 *   **Distance-based spawning**: obstacle spacing stays fair at any speed.
 *   **Type Safety**: 100% TypeScript for reliable code.
 *   **Small bundle**: no image or audio files.
@@ -102,7 +102,7 @@ We are looking for open-source contributors to help take this game to the next l
 
 <div align="center">
 
-![Phaser](https://img.shields.io/badge/Phaser-2D2D2D?style=for-the-badge&logo=phaser&logoColor=white)
+![Babylon.js](https://img.shields.io/badge/Babylon.js-BB464B?style=for-the-badge&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
