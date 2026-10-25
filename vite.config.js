@@ -6,10 +6,10 @@ export default defineConfig({
         outDir: 'dist',
         assetsDir: 'assets',
         minify: 'terser',
-        sourcemap: true // Helpful for debugging
+        sourcemap: false
     },
     server: {
         port: 3000,
-        open: true // Auto-open browser
+        open: false
     }
 });

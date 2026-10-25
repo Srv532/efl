@@ -2,7 +2,7 @@
 
 # 🌙 ESCAPE FROM LUNARS 👟
 
-<img src="https://img.shields.io/badge/Status-Early%20Alpha-orange?style=for-the-badge&logo=statuspage&logoColor=white" alt="Status"/>
+<img src="https://img.shields.io/badge/Version-1.1.0-orange?style=for-the-badge&logo=statuspage&logoColor=white" alt="Status"/>
 <img src="https://img.shields.io/badge/Made%20With-Phaser%203-blue?style=for-the-badge&logo=html5&logoColor=white" alt="Made With"/>
 <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge&logo=opensourceinitiative&logoColor=white" alt="License"/>
 
@@ -12,7 +12,7 @@
 
 **Dodge Rickshaws. Outrun the Chappal. Collect Umbrella Parts.**
 
-*A high-fidelity 2D endless runner set in the vibrant streets of India, built with Phaser 3.*
+*A top-down endless runner set in the vibrant streets of India, built with Phaser 3.*
 
 [**🎮 PLAY NOW**](https://efl-eight.vercel.app)
 
@@ -20,22 +20,19 @@
 
 ---
 
-## ⚠️ PROS & CONS (The Honest Truth)
+## ✨ What's new in v1.1
 
-This project is in its **Early Alpha** stage. We believe in transparency!
+*   **All-new art**: every sprite and the street are drawn in code - crisp at any size, truly transparent, nothing to download.
+*   **One consistent top-down view**: street, runner, Mother, rickshaws, carts, chappals, barriers and banners.
+*   **Jump, slide and lane changes all matter**: jump over chappals and barriers, slide under banners, dodge rickshaws and carts.
+*   **Mother chase meter**: hits cost metres, coins and umbrella parts buy them back; reach 0m and you are caught.
+*   **Working menu**: difficulty (Easy / Normal / Hard), How to Play, Credits and a saved high score.
+*   **Better controls**: swipe or tap on touch screens, `P` / `Esc` to pause, auto-pause when the tab loses focus.
+*   **Compact HUD** that no longer covers the lanes, and a bundle with no image files.
 
-### 🛑 CONS (Work In Progress)
-*   **🚧 Early Development**: The game is still raw. You might find bugs.
-*   **🔊 No Sound Yet**: The streets are silent... for now. Audio implementation is next!
-*   **📱 Mobile Touch**: Swipe controls are simulated but could be smoother.
-*   **🏎️ Performance**: Optimization for low-end devices is still underway.
-
-### ✅ PROS (What We're Proud Of)
-*   **🎨 Stunning Visuals**: High-fidelity AI-generated assets (256px+ sprites).
-*   **🛠️ Robust Tech Stack**: Built on **Phaser 3 + TypeScript + Vite** for maximum speed.
-*   **🌂 Deep Progression**: Unique "Umbrella Part" collection system with persistence.
-*   **🇮🇳 Authentic Vibe**: Rickshaws, Vendors, and the legendary Mother's Chappal!
-*   **💻 Clean Architecture**: Modular, pooled, and event-driven codebase.
+### Still to do
+*   Sound effects and music
+*   Power-ups (magnet, shield, multiplier)
 
 ---
 
@@ -47,7 +44,7 @@ This project is in its **Early Alpha** stage. We believe in transparency!
 
 ### 🚀 Core Mechanics
 *   **3-Lane Runner**: Classic subway-surfer style movement.
-*   **Diverse Obstacles**: Auto-Rickshaws, Street Vendors, and Flying Chappals.
+*   **Diverse Obstacles**: Auto-Rickshaws, Umbrella Carts, Chappals, Road Barriers and Overhead Banners.
 *   **Power-Ups**: (Coming Soon) Magnets, Shields, and Multipliers.
 *   **Victory Condition**: Collect all **10 Umbrella Parts** to win!
 
@@ -55,10 +52,10 @@ This project is in its **Early Alpha** stage. We believe in transparency!
 <td width="50%">
 
 ### 🛠️ Under the Hood
-*   **Object Pooling**: Efficient recycling of game entities.
-*   **Parallax Scrolling**: Multi-layered background depth.
+*   **Procedural art**: textures are generated at start-up from drawing code (`src/art/draw.ts`).
+*   **Distance-based spawning**: obstacle spacing stays fair at any speed.
 *   **Type Safety**: 100% TypeScript for reliable code.
-*   **Asset Management**: Centralized loading and scaling.
+*   **Small bundle**: no image or audio files.
 
 </td>
 </tr>
@@ -72,8 +69,8 @@ We are looking for open-source contributors to help take this game to the next l
 
 ### We need help with:
 1.  **🎵 Sound Design**: SFX for jumps, slides, and collisions.
-2.  **📱 Mobile Controls**: Better touch/swipe gesture implementation.
-3.  **🏃 Animations**: Smoother spritesheet transitions.
+2.  **📱 Mobile Testing**: Try it on more devices and report problems.
+3.  **🏃 Animations**: More character animation frames.
 4.  **🎨 UI/UX**: Polishing the menus and HUD.
 
 ### How to Contribute
@@ -91,11 +88,11 @@ We are looking for open-source contributors to help take this game to the next l
 
 | Action | Desktop (Keyboard) | Mobile (Touch) |
 |:------:|:-------:|:------:|
-| **Move Left** | `←` / `A` | `Tap Left` |
-| **Move Right** | `→` / `D` | `Tap Right` |
-| **Jump** | `Space` / `↑` / `W` | `Tap Jump` |
-| **Slide** | `↓` / `S` | `Tap Slide` |
-| **Pause** | `Click Button` | `Tap Pause` |
+| **Move Left** | `←` / `A` | Swipe left |
+| **Move Right** | `→` / `D` | Swipe right |
+| **Jump** | `Space` / `↑` / `W` | Swipe up or tap |
+| **Slide** | `↓` / `S` | Swipe down |
+| **Pause** | `P` / `Esc` | Pause button |
 
 </div>
 
@@ -118,7 +115,7 @@ We are looking for open-source contributors to help take this game to the next l
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/Srv532/Escape-From-Lunars.git
+git clone https://github.com/Srv532/efl.git
 
 # 2. Install dependencies
 npm install
@@ -134,7 +131,7 @@ npm run dev
 
 <div align="center">
 
-**Built with 💜 by Antigravity AI**
+**Made by Sravan Shaji**
 *Educational Project - Open for Community*
 
 </div>
